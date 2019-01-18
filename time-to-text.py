@@ -77,30 +77,30 @@ if user_choice.lower() == 'cur':
 #infinite loop to run the program until user chose to quit
 while True:
     try:
-            if user_choice.lower() == 'cur':
-                    if run_loop.upper() == 'Y':
-                            translate_time(datetime.datetime.now().time())
-                            for i in range(0, repeat_time):
-                                print(f"Waiting time left: {repeat_time - i}")
-                                time.sleep(1)
-                                if keyboard.is_pressed('Q'):
-                                        quit()
-                            os.system('cls')
-                    else:
-                        translate_time(datetime.datetime.now().time())
-                        user_input = str(input("Type anything to continue, leave blank to exit."))
-                        if not user_input:
-                                quit()
-                        else:
-                                continue
-            elif user_choice.lower() == 'own':
-                user_input = input("Input time in format xx:xx (leave empty to quit): ")
-                if not user_input:
+        if user_choice.lower() == 'cur':
+            if run_loop.upper() == 'Y':
+                translate_time(datetime.datetime.now().time())
+                for i in range(0, repeat_time):
+                    print(f"Waiting time left: {repeat_time - i}")
+                    time.sleep(1)
+                    if keyboard.is_pressed('Q'):
                         quit()
-                translate_time(user_input)
+                os.system('cls')
             else:
-                user_choice = str(input("Use current time or input your own? (Cur/Own): "))
-                if user_choice.lower() == 'cur':
-                        run_loop = str(input("Would you like to run this app in a loop every minute? (Y/N): "))
+                translate_time(datetime.datetime.now().time())
+                user_input = str(input("Type anything to continue, leave blank to exit."))
+                if not user_input:
+                    quit()
+                else:
+                    continue
+        elif user_choice.lower() == 'own':
+            user_input = input("Input time in format xx:xx (leave empty to quit): ")
+            if not user_input:
+                quit()
+            translate_time(user_input)
+        else:
+            user_choice = str(input("Use current time or input your own? (Cur/Own): "))
+            if user_choice.lower() == 'cur':
+                run_loop = str(input("Would you like to run this app in a loop every minute? (Y/N): "))
     except ValueError:
-            print("Something went horribly wrong! Please restart the program.")
+        print("Something went horribly wrong! Please restart the program.")
